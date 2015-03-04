@@ -8,7 +8,7 @@ then
 fi
 
 
-wget https://github.com/nicolas-rabault/poppy_install/blob/master/src/poppy_logo
+wget https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_logo
 mv poppy_logo /home/poppy_logo
 sed -i /poppy_logo/d /home/poppy/.bashrc
 echo cat /home/poppy_logo >> /home/poppy/.bashrc
@@ -29,7 +29,7 @@ apt-get -y install  axel wget unzip whiptail python-pip python-opencv guvcview \
 
 #pypot installer example
 su poppy
-    wget https://github.com/nicolas-rabault/poppy_install/blob/master/src/poppy_install.sh
+    wget https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_install.sh
     bash ./poppy_install.sh  >> /home/poppy/install_log &
     PID=$!
     wait $PID

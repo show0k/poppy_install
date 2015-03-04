@@ -78,7 +78,7 @@ resize_p2
 echo -e "\e[33mdownload needed files.\e[0m"
 mkdir $HOME/src
 cd $HOME/src
-    wget https://github.com/nicolas-rabault/poppy_install/blob/master/src/poppy_launcher.sh
+    wget https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_launcher.sh
     chmod +x poppy_launcher.sh
     (crontab -l; echo "@reboot (cd $HOME/src; bash poppy_launcher.sh; rm poppy_launcher.sh)") | crontab
 cd ..
