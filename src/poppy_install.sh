@@ -3,25 +3,6 @@
 PYTHONS="2.7.9"
 REPOS="pypot poppy-creature poppy-ergo"
 
-if [ `whoami` != "root" ];
-then
-	echo "You must run the app as root:"
-	echo "sudo bash $0"
-	exit 0
-fi
-
-# Update needed apps.
-echo 'Update your system.'
-apt-get clean
-apt-get update
-apt-get upgrade -y
-apt-get dist-upgrade -y
-apt-get -y install  axel wget unzip whiptail python-pip python-opencv guvcview \
-                    xz-utils libportaudio0 libportaudio2 libportaudiocpp0 \
-                    portaudio19-dev python-setuptools libnss-mdns curl git i2c-tools \
-                    make build-essential libssl-dev zlib1g-dev libbz2-dev \
-                    libreadline-dev libsqlite3-dev wget llvm python-pyaudio
-
 # Install pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
 
@@ -42,8 +23,8 @@ fi
 
 # Clone repos
 echo 'Clone repos.'
-mkdir /home/poppy/dev
-cd /home/poppy/dev
+mkdir $HOME/dev
+cd $HOME/dev
 
 # Clone poppy repos.
 for repo in $REPOS

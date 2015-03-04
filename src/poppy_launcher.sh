@@ -8,6 +8,7 @@ then
 fi
 
 
+wget https://github.com/nicolas-rabault/poppy_install/blob/master/src/poppy_logo
 mv poppy_logo /home/poppy_logo
 sed -i /poppy_logo/d /home/poppy/.bashrc
 echo cat /home/poppy_logo >> /home/poppy/.bashrc
@@ -26,8 +27,9 @@ apt-get -y install  axel wget unzip whiptail python-pip python-opencv guvcview \
                     make build-essential libssl-dev zlib1g-dev libbz2-dev \
                     libreadline-dev libsqlite3-dev wget llvm python-pyaudio >> /home/poppy/install_log
 
-#Download the installer
+#pypot installer example
 su poppy
+    wget https://github.com/nicolas-rabault/poppy_install/blob/master/src/poppy_install.sh
     bash ./poppy_install.sh  >> /home/poppy/install_log &
     PID=$!
     wait $PID

@@ -75,6 +75,14 @@ apt-get install avahi-daemon passwd libnss-mdns
 echo -e "\e[33mResize your file system.\e[0m"
 resize_p2
 
+echo -e "\e[33mdownload needed files.\e[0m"
+mkdir $HOME/src
+cd $HOME/src
+    wget https://github.com/nicolas-rabault/poppy_install/blob/master/src/poppy_launcher.sh
+    chmod +x poppy_launcher.sh
+    (crontab -l; echo "@reboot (cd $HOME/src; bash poppy_launcher.sh; rm poppy_launcher.sh)") | crontab
+cd ..
+
 echo -e "\e[33mDefault Hostname change to \e[4mpoppy\e[0m."
 echo 'poppy' > /etc/hostname
 echo '127.0.0.1     poppy' >> /etc/hosts
@@ -84,17 +92,6 @@ echo -e "\e[33mCreate a new user \e[4mpoppy\e[0m\e[33m with the default password
 
 useradd -m -s /bin/bash -G adm,dialout,fax,cdrom,floppy,tape,sudo,audio,dip,video,plugdev,netdev,lpadmin,fuse poppy
 echo poppy:poppy | chpasswd
-
-currentDirectory="$(pwd)/src"
-if [ -f $currentDirectory/poppy_install.sh ] && [ -f $currentDirectory/poppy_launcher.sh ];
-then
-    chmod +x $currentDirectory/poppy_install.sh
-    chmod +x $currentDirectory/poppy_launcher.sh
-    (crontab -l; echo "@reboot (cd $currentDirectory; bash poppy_launcher.sh; rm poppy_launcher.sh)") | crontab
-else
-    echo -e "\e[31mError. Couldn't find poppy_install.sh and poppy_launcher.sh you probably must copy this script.\e[0m"
-    exit 0
-fi
 
 echo -e '\e[33mNow I will reboot and continue the installation.\e[0m'
 echo -e '\e[33mPlease reconnect you with:\e[0m'
