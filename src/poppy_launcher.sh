@@ -7,34 +7,25 @@ then
     exit 0
 fi
 
-
 wget https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_logo
 mv poppy_logo /home/poppy_logo
 sed -i /poppy_logo/d /home/poppy/.bashrc
 echo cat /home/poppy_logo >> /home/poppy/.bashrc
 echo 'Starting the Poppy environement installation' >> /home/poppy/install_log
+sed -i /install_log/d /home/poppy/.bashrc
 echo tail -f /home/poppy/install_log >> /home/poppy/.bashrc
 
+# allow poppy to use sudo without password
+chmod +w /etc/sudoers
+echo "poppy ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+chmod -w /etc/sudoers
+usermod --pass='*' root # don't need root password any more
+export HOME=/home/poppy
+
 # Update needed apps.
-echo 'Update your system.'
-apt-get clean >> /home/poppy/install_log
-apt-get update >> /home/poppy/install_log
-apt-get upgrade -y >> /home/poppy/install_log
-apt-get dist-upgrade -y >> /home/poppy/install_log
-apt-get -y install  axel wget unzip whiptail python-pip python-opencv guvcview \
-                    xz-utils libportaudio0 libportaudio2 libportaudiocpp0 \
-                    portaudio19-dev python-setuptools libnss-mdns curl git i2c-tools \
-                    make build-essential libssl-dev zlib1g-dev libbz2-dev \
-                    libreadline-dev libsqlite3-dev wget llvm python-pyaudio >> /home/poppy/install_log
 
-#pypot installer example
-su poppy
-    wget https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_install.sh
-    bash ./poppy_install.sh  >> /home/poppy/install_log &
-    PID=$!
-    wait $PID
-exit
-
+#popy creatures installer
+su - poppy -c "curl -L https://raw.githubusercontent.com/pierre-rouanet/build-raspbian-image/master/delivery/poppy-installer | bash -s poppy-humanoid"  >> /home/poppy/install_log
 
 # Remove instalation at startup
 sed -i /install_log/d /home/poppy/.bashrc
