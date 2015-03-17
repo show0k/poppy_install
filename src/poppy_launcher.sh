@@ -37,7 +37,7 @@ export HOME=/home/poppy
 su - poppy -c "curl -L https://raw.githubusercontent.com/pierre-rouanet/build-raspbian-image/master/delivery/poppy-installer | bash -s poppy-humanoid" >> /home/poppy/install_log
 
 # WebApp installer
-curl -L https://raw.githubusercontent.com/MakingBot/webapp/master/poppy/setup.sh | bash >> /home/poppy/install_log
+su - poppy -c "curl -L https://raw.githubusercontent.com/MakingBot/webapp/master/poppy/setup.sh | sudo bash" >> /home/poppy/install_log
 
 # Remove instalation at startup
 sed -i /install_log/d /home/poppy/.bashrc
