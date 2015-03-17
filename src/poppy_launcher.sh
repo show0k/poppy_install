@@ -7,6 +7,16 @@ then
     exit 0
 fi
 
+# Wait internet
+
+while true
+do
+    wget -q --tries=10 --timeout=20 -O - http://google.com > /dev/null
+    if [[ $? -eq 0 ]]; then
+        break
+    fi
+done
+
 wget -P  /home/poppy_logo https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_logo
 sed -i /poppy_logo/d /home/poppy/.bashrc
 echo cat /home/poppy_logo >> /home/poppy/.bashrc
