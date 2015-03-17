@@ -76,11 +76,9 @@ echo -e "\e[33mResize your file system.\e[0m"
 resize_p2
 
 echo -e "\e[33mdownload needed files.\e[0m"
-mkdir $HOME/src
-cd $HOME/src
-    wget https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_launcher.sh
-    (crontab -l; echo "@reboot (cd $HOME/src; bash poppy_launcher.sh; rm poppy_launcher.sh)") | crontab
-    echo CHRONTAB ADDED
+wget -P $HOME/src https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_launcher.sh
+(crontab -l; echo "@reboot (cd $HOME/src; bash poppy_launcher.sh; rm poppy_launcher.sh)") | crontab
+echo CHRONTAB ADDED
 cd ..
 
 echo -e "\e[33mDefault Hostname change to \e[4mpoppy\e[0m."
