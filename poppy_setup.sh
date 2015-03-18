@@ -62,6 +62,13 @@ EOF
 
 # Here is the script start :
 
+arch="$(uname -m)"
+if [[ $arch != arm* ]]
+then
+        echo -e "\e[31mWARNING\e[0m : \e[33mThis script change some system setting, you should NOT run it in your desk computer.\e[0m"
+        exit 0
+fi
+
 if [ `whoami` != "root" ];
 then
     echo -e "\e[33mYou must run the app as root:\e[0m"
@@ -78,7 +85,6 @@ resize_p2
 echo -e "\e[33mdownload needed files.\e[0m"
 wget -P $HOME/src https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_launcher.sh
 (crontab -l; echo "@reboot (cd $HOME/src; bash poppy_launcher.sh; rm poppy_launcher.sh)") | crontab
-echo CHRONTAB ADDED
 cd ..
 
 echo -e "\e[33mDefault Hostname change to \e[4mpoppy\e[0m."
