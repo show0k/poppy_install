@@ -50,7 +50,7 @@ Let's start the installation :
 ```
   A process will automatically take you terminal and print the installation output. You can leave it with `ctrl+c`. You can get back this print by reading the install_log file :
 ```bash
-poppy@poppy:~$ tail -f /home/odroid/install_log
+poppy@poppy:~$ tail -f /home/poppy/install_log
 ...
 ```
 If the last line is :
