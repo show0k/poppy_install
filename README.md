@@ -37,7 +37,7 @@ Let's start the installation :
 
  2. Download and run poppy_setup.sh
     ```bash
-      odroid@odroid:~$ curl -L https://raw.githubusercontent.com/MakingBot/webapp/master/poppy/setup.sh | sudo bash
+      odroid@odroid:~$ curl -L https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/poppy_setup.sh | sudo bash
     ```
     Do not forget to set the root password "odroid"
 
@@ -50,7 +50,7 @@ Let's start the installation :
 ```
   A process will automatically take you terminal and print the installation output. You can leave it with `ctrl+c`. You can get back this print by reading the install_log file :
 ```bash
-poppy@poppy:~$ tail -f /home/odroid/install_log
+poppy@poppy:~$ tail -f /home/poppy/install_log
 ...
 ```
 If the last line is :
