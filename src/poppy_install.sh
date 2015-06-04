@@ -39,6 +39,10 @@ do
   git clone $path
 done
 
+# Install Scipy dependancies
+sudo apt-get install libblas3gf libc6 libgcc1 libgfortran3 liblapack3gf libstdc++6 build-essential gfortran python-all-dev libatlas-base-dev
+
+
 # Install Poppy repos
 for PYTHON in $PYTHONS
 do
@@ -55,6 +59,7 @@ do
   fi
 
   pip install $numpy_repo
+  pip install scipy
 
   for repo in $REPOS
   do
