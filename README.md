@@ -1,7 +1,7 @@
 Poppy software installation
 ===========================
 
-This tutorial describe how to install a clean poppy embeded linux environement from scratch.
+This tutorial describe how to install a clean poppy embedded linux environment from scratch.
 
 To do that you will need :
 
