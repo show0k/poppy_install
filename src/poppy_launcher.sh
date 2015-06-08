@@ -17,7 +17,7 @@ do
     fi
 done
 
-wget -P  /home https://raw.githubusercontent.com/nicolas-rabault/poppy_install/master/src/poppy_logo
+wget -P  /home https://raw.githubusercontent.com/poppy-project/poppy_install/master/src/poppy_logo
 sed -i /poppy_logo/d /home/poppy/.bashrc
 echo cat /home/poppy_logo >> /home/poppy/.bashrc
 echo 'Starting the Poppy environement installation' >> /home/poppy/install_log
