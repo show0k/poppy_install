@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 usage() {
   echo "Usage: $0 [-S, --use-stable-release] CREATURE1 CREATURE2 ..." 1>&2
@@ -34,9 +35,6 @@ for creature in $creatures
   fi
 done
 
-set -e
-set -x
-
 
 install_pyenv() {
   sudo apt-get install -y curl git
@@ -67,6 +65,10 @@ install_python_std_packages() {
   pip install scipy
   pip install matplotlib
   pip install ipython[all]
+}
+
+install_notebook_startup() {
+    curl -L https://raw.githubusercontent.com/poppy-project/poppy-installer/master/install-deps/install-notebook.sh | sudo bash
 }
 
 install_poppy_software() {
@@ -107,6 +109,7 @@ install_poppy_environment() {
   install_python
   install_python_std_packages
   install_poppy_software
+  install_notebook_startup
 
   echo "Please now reboot your system"
 }
