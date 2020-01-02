@@ -5,7 +5,7 @@ This tutorial describe how to install a clean poppy embedded linux environment f
 
 To do that you will need :
 
- - your poppy main board (odroid U3 or pasberryPi)
+ - your poppy main board (odroid U3 or rasberryPi)
  - the associated memmory card
  - a card reader for your computer
  - an ethernet connection to your network (internet and local)
